@@ -2,10 +2,8 @@ FROM centos
 
 RUN yum -y install java-1.8.0-openjdk
 
-COPY webapp.yml /opt/dropwizard/
-
-EXPOSE 8080
+COPY backend.yml /opt/dropwizard/
 
 WORKDIR /opt/dropwizard
 
-CMD ["java", "-jar", "webapp-1.0-SNAPSHOT.jar", "server", "webapp.yml"]
+CMD ["java", "-jar", "backend-1.0-SNAPSHOT.jar", "server", "backend.yml"]
