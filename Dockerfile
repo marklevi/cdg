@@ -1,9 +1,11 @@
-FROM java:8-jre
+FROM java:8-jdk
 
-COPY backend.yml /opt/dropwizard/
-COPY build/libs/backend-1.0-SNAPSHOT.jar /opt/dropwizard/
+COPY . /opt/dropwizard
+
 EXPOSE 8080
 
 WORKDIR /opt/dropwizard
 
-CMD ["java", "-jar", "backend-1.0-SNAPSHOT.jar", "server", "backend.yml"]
+RUN ["./gradlew", "test"]
+
+CMD ["java", "-jar", "./build/libs/backend-1.0-SNAPSHOT.jar", "server", "backend.yml"]
