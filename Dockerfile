@@ -1,8 +1,8 @@
-FROM centos
-
-RUN yum -y install java-1.8.0-openjdk
+FROM java:8-jre
 
 COPY backend.yml /opt/dropwizard/
+COPY build/libs/backend-1.0-SNAPSHOT.jar /opt/dropwizard/
+EXPOSE 8080
 
 WORKDIR /opt/dropwizard
 

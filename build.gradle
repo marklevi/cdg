@@ -9,7 +9,6 @@ sourceCompatibility = 1.8
 
 project.ext {
     dropwizardVersion = '1.0.5'
-    mainClass = "com.cdg.backend.BackendApplication"
 }
 
 repositories {
@@ -37,11 +36,11 @@ jar {
         }
     }
     manifest {
-        attributes("Main-Class": mainClass )
+        attributes 'Main-Class': 'com.cdg.backend.BackendApplication'
     }
 }
 
-mainClassName = mainClass
+mainClassName = 'com.cdg.backend.BackendApplication'
 
 task stage(dependsOn: ['build', 'installApp'])
 build.mustRunAfter clean
