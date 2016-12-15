@@ -5,8 +5,12 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - $(aws ecr get-login --region eu-west-1)
+      - echo printing env
+      - echo $(printenv)
+      - echo printing code build env
+      - echo $(CODEBUILD_BUILD_ID)
       - echo Generating custom Dockerrun file...
-      - sed -i "" "s/<VERSION>/$(CODEBUILD_BUILD_ID)/g" Dockerrun.aws.json
+      - $(sed -i "" "s/<VERSION>/$CODEBUILD_BUILD_ID/g" Dockerrun.aws.json)
   build:
     commands:
       - echo Build started on `date`
