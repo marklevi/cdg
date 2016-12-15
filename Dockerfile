@@ -7,6 +7,6 @@ EXPOSE 8080
 WORKDIR /opt/dropwizard
 
 RUN ["chmod", "+x", "gradlew"]
-RUN ["./gradlew", "test"]
+RUN ["./gradlew", "build"]
 
 CMD ["java", "-jar", "build/libs/backend-1.0-SNAPSHOT.jar", "server", "backend.yml"]
